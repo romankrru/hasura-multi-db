@@ -1,0 +1,41 @@
+table:
+  name: article
+  schema: public
+object_relationships:
+- name: author
+  using:
+    manual_configuration:
+      column_mapping:
+        authorId: id
+      insertion_order: null
+      remote_table:
+        name: user
+        schema: app
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - content
+    set:
+      authorId: x-hasura-User-Id
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - authorId
+    - id
+    - content
+    filter:
+      authorId:
+        _eq: X-Hasura-User-Id
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns: []
+    filter:
+      author:
+        id:
+          _eq: X-Hasura-User-Id
+  role: user

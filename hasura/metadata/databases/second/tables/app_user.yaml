@@ -1,0 +1,9 @@
+table:
+  name: user
+  schema: app
+select_permissions:
+- permission:
+    columns:
+    - name
+    filter: {}
+  role: user

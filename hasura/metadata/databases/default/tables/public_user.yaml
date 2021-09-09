@@ -1,0 +1,19 @@
+table:
+  name: user
+  schema: public
+object_relationships:
+- name: tags
+  using:
+    manual_configuration:
+      column_mapping:
+        id: userId
+      insertion_order: null
+      remote_table:
+        name: tags
+        schema: secondschema
+select_permissions:
+- permission:
+    columns:
+    - id
+    filter: {}
+  role: user

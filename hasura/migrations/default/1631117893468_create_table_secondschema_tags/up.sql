@@ -1,0 +1,1 @@
+CREATE TABLE "secondschema"."tags" ("id" serial NOT NULL, "text" text NOT NULL, "userId" integer NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON UPDATE restrict ON DELETE restrict);
